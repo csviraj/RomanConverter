@@ -13,7 +13,7 @@ For example:
   - Run shell script: 
   $./startup.sh
   - Open browser and use URL: http://localhost:8080/health
-  - An OK response would denote app is healthy and responding.
+  - An {"status":"UP"} response would denote app is healthy and responding.
   - Enable Hystrix Dashboard in a new tab in your browser. Note: Ignore the Error as dashboard will start displaying data
     as soon as first GET request is made. Use URL: http://localhost:8080/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8080%2Fhystrix.stream
   - You can now use URL: http://localhost:8080/romannumeral?query=<Any Number between 1 and 3999999> to get the equivalent roman numeral.

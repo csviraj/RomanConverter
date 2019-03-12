@@ -25,16 +25,25 @@ public class RomanConverterController {
      * Mapping Get request to this method that accepts number and returns a Roman Numeral equivalent.
      * Includes Hystrix Circuit breakin, which also enables hystrix streaming to dashboard for monitoring
      * and analytics of app response performance.
-     * @param number is the query parameter and is a required field. Any request that is not a type of
-     *               integer will be returned HTTP 400.
+     * @param numberAsString is the query parameter and is a required field. Any request that is not a type of
+     *               integer will be returned as Bad Request HTTP 400.
      * @return String containing Roman Number Equivalent for the given arabic number.
      */
     @GetMapping(value = "/romannumeral", produces = {MediaType.TEXT_PLAIN_VALUE})
     @HystrixCommand(fallbackMethod = "getRomanNumeralFallback", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")},
-            ignoreExceptions = {RuntimeException.class, IllegalArgumentException.class})
-    public String getRomanNumeral(@RequestParam(name="query", required = true) Integer number){
+            ignoreExceptions = {RuntimeException.class, IllegalArgumentException.class,NumberFormatException.class})
+    public String getRomanNumeral(@RequestParam(name="query", required = true) String numberAsString){
         long startTime = System.nanoTime();
+        int number;
+        if(numberAsString!=null){
+            number = Integer.parseInt(numberAsString);
+        }else{
+            String errorMessage = "ERROR ! Input is Blank";
+            LOGGER.error(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
+        }
+
         String romanNumeral = romanConverterService.convertIntoRomanNumeral(number);
         long stopTime = System.nanoTime();
         LOGGER.info("Get Request for Roman Conversion Response Time: {}", (stopTime-startTime)/1e6);
@@ -48,7 +57,7 @@ public class RomanConverterController {
      * @param number
      * @return
      */
-    private String getRomanNumeralFallback(Integer number){
+    private String getRomanNumeralFallback(String number){
         return "Request fails. It takes long time to response";
     }
 }

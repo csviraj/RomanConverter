@@ -16,7 +16,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
      * @param request
      * @return Return the ResponseEntity populated with error message and appropriate Http error status.
      */
-    @ExceptionHandler(value = { IllegalArgumentException.class, RuntimeException.class})
+    @ExceptionHandler(value = { IllegalArgumentException.class, RuntimeException.class,NumberFormatException.class})
     protected ResponseEntity<Object> handleException(RuntimeException ex, WebRequest request) {
         if(ex instanceof IllegalArgumentException || ex instanceof NumberFormatException) {
             return new ResponseEntity<>("BAD REQUEST, ERROR:" + ex.getMessage(), HttpStatus.BAD_REQUEST);
