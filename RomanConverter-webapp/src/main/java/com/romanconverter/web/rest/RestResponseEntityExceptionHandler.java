@@ -18,7 +18,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
      */
     @ExceptionHandler(value = { IllegalArgumentException.class, RuntimeException.class})
     protected ResponseEntity<Object> handleException(RuntimeException ex, WebRequest request) {
-        if(ex instanceof IllegalArgumentException) {
+        if(ex instanceof IllegalArgumentException || ex instanceof NumberFormatException) {
             return new ResponseEntity<>("BAD REQUEST, ERROR:" + ex.getMessage(), HttpStatus.BAD_REQUEST);
         }else{
             return new ResponseEntity<>("ERROR:" + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

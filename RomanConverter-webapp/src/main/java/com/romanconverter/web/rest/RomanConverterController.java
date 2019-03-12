@@ -31,7 +31,8 @@ public class RomanConverterController {
      */
     @GetMapping(value = "/romannumeral", produces = {MediaType.TEXT_PLAIN_VALUE})
     @HystrixCommand(fallbackMethod = "getRomanNumeralFallback", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")})
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")},
+            ignoreExceptions = {RuntimeException.class, IllegalArgumentException.class})
     public String getRomanNumeral(@RequestParam(name="query", required = true) Integer number){
         long startTime = System.nanoTime();
         String romanNumeral = romanConverterService.convertIntoRomanNumeral(number);
