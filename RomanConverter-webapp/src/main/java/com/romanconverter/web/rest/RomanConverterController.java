@@ -27,6 +27,6 @@ public class RomanConverterController {
         String romanNumeral = romanConverterService.convertIntoRomanNumeral(number);
         long stopTime = System.nanoTime();
         LOGGER.info("Get Request for Roman Conversion Response Time: {}", (stopTime-startTime)/1e6);
-        return romanNumeral;
+        return "Roman Numeral Equivalent for number:"+number+ " = " + romanNumeral;
     }
 }

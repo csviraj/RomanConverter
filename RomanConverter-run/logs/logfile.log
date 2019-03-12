@@ -1,1 +1,4 @@
 INFO  | 2019-03-11 23:52:03 | [http-nio-8080-exec-1] rest.RomanConverterController (RomanConverterController.java:29) - Get Request for Roman Conversion Response Time: 0.054625
+INFO  | 2019-03-12 01:49:43 | [http-nio-8080-exec-1] rest.RomanConverterController (RomanConverterController.java:29) - Get Request for Roman Conversion Response Time: 0.050545
+INFO  | 2019-03-12 01:49:46 | [http-nio-8080-exec-3] rest.RomanConverterController (RomanConverterController.java:29) - Get Request for Roman Conversion Response Time: 0.058184
+INFO  | 2019-03-12 01:50:26 | [http-nio-8080-exec-1] rest.RomanConverterController (RomanConverterController.java:29) - Get Request for Roman Conversion Response Time: 0.048166
