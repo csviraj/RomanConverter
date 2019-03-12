@@ -18,6 +18,10 @@ public class HealthCheckController {
         this.healthCheckService = healthCheckService;
     }
 
+    /**
+     * A simple Health Check Get Request where True is returned if invoked and no errors happen.
+     * @return boolean
+     */
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.HEAD}, produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<?> get() {
         if (!healthCheckService.isHealthy()) {

@@ -36,7 +36,8 @@ Logic used:
   
   Testing
   - Used Junit 5 for performing Unit Testing.
-  - Added test for positive cases, boundry conditions and negative cases to verify correct exception handling
+  - Added test for positive cases, boundary conditions and negative cases to verify correct exception handling
+  - RestResponseEntityExceptionHandler class is used to handle all exceptions and map them to correct HTTP ERROR RESPONSE with a user friendly message.
 
 Packaging Layout:
  - I used Maven as project management tool
