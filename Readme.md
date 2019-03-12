@@ -17,6 +17,7 @@ For example:
   - You can now use URL: http://localhost:8080/romannumeral?query=<Any Number between 1 and 3999999> to get the equivalent roman numeral.
   - Numeral inside () in the output denote Numerals through Venculum addition.
   - Time Taken for each request to process and respond is logged on console and file.
+  - Use command: $./shutdown.sh to shutdown the application.
   - Additionally project can be build using mvn clean install
 
 ### Engineering and Testing
