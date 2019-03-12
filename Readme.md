@@ -14,6 +14,8 @@ For example:
   $./startup.sh
   - Open browser and use URL: http://localhost:8080/health
   - An OK response would denote app is healthy and responding.
+  - Enable Hystrix Dashboard in a new tab in your browser. Note: Ignore the Error as dashboard will start displaying data
+    as soon as first GET request is made. Use URL: http://localhost:8080/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8080%2Fhystrix.stream
   - You can now use URL: http://localhost:8080/romannumeral?query=<Any Number between 1 and 3999999> to get the equivalent roman numeral.
   - Numeral inside () in the output denote Numerals through Venculum addition.
   - Time Taken for each request to process and respond is logged on console and file.
@@ -24,6 +26,7 @@ For example:
 Technology Used:
   - Used Spring boot with web starter kit (Includes Tomcat) to create the web application.
   - Used Log4j2 for logging in concole and file.
+  - Used Hystrix for fall back circuit breaking, analytics and monitoring.
   - Used Maven as project management tool.
   - IntellJ as the IDE
   - JAVA 8
