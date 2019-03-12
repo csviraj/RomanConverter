@@ -13,10 +13,10 @@ public class RomanConverterServiceImpl implements RomanConverterService {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public static final int VENCULUM_THRESHOLD = 3999;
-    public static final int MAX_VALUE = 3999999;
-    public static final int MIN_VALUE = 1;
-    public static final String OUT_OF_RANGE_ERR_MSG = "Number Out Of Range. Enter No between "
+    private static final int VENCULUM_THRESHOLD = 3999;
+    private static final int MAX_VALUE = 3999999;
+    private static final int MIN_VALUE = 1;
+    private static final String OUT_OF_RANGE_ERR_MSG = "Number Out Of Range. Enter No between "
             + MIN_VALUE +" and " + MAX_VALUE;
 
     private final TreeMap<Integer, String> intToRomanMap;
@@ -100,8 +100,9 @@ public class RomanConverterServiceImpl implements RomanConverterService {
                     isAboveVinculumThreshold=false;
                 }
             }
-        }catch (Exception e){
+        }catch (RuntimeException e){
             LOGGER.error("An error occured while performing Roman Conversion. ERROR: {}", e.getMessage());
+            throw e;
         }
 
         return romanNumber.toString();
